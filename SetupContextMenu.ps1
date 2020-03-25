@@ -9,6 +9,9 @@ $resourcePath = "$env:LOCALAPPDATA\WindowsTerminalContextIcons\"
 $contextMenuIcoName = "terminal.ico"
 $cmdIcoFileName = "cmd.ico"
 $wslIcoFileName = "linux.ico"
+$wslUbuntuIcoFileName = "ubuntu.ico"
+$wslDebianIcoFileName = "debian.ico"
+$wslOpenSuseIcoFileName = "opensuse.ico"
 $psIcoFileName = "powershell.ico"
 $psCoreIcoFileName = "powershell-core.ico"
 $azureCoreIcoFileName = "azure.ico"
@@ -140,7 +143,15 @@ $profiles | ForEach-Object {
             $icoPath = "$psIcoFileName"
         }
         elseif ($source -eq "Windows.Terminal.Wsl") {
-            $icoPath = "$wslIcoFileName"
+            if ($profileName -eq "Ubuntu"){
+                $icoPath = "$wslUbuntuIcoFileName"
+            }
+            elseif ($profileName -eq "Debian") {
+                $icoPath = "$wslDebianIcoFileName"
+            }
+            else {
+                $icoPath = "$wslIcoFileName"
+            }
         }
         elseif ($source -eq "Windows.Terminal.PowershellCore") {
             $icoPath = "$psCoreIcoFileName"
